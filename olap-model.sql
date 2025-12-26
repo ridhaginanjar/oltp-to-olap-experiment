@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS dim_customer(
     customer_key SERIAL PRIMARY KEY,
     customer_id VARCHAR(5) NOT NULL,
     company_name VARCHAR(40) NOT NULL,
-    contact_name VARCHAR(30),
+    contact_name VARCHAR(30) NOT NULL,
     city VARCHAR(15),
     region VARCHAR(15),
     country VARCHAR(15)
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS dim_products (
     product_key SERIAL PRIMARY KEY,
     product_id INT,
     product_name VARCHAR(40) NOT NULL,
-    category_name VARCHAR(15) NOT NULL,
+    category_name VARCHAR(15),
     unit_price INT
 )
 
@@ -37,9 +37,9 @@ CREATE TABLE IF NOT EXISTS fact_sales (
     customer_key INT REFERENCES dim_customer(customer_key),
     date_key INT REFERENCES dim_date(date_key),
     quantity INT,
-    unit_price DECIMAL,
-    discount_amount DECIMAL,
-    net_revenue DECIMAL,
+    unit_price NUMERIC(12,2) NOT NULL,
+    discount_amount NUMERIC(12,2) NOT NULL,
+    net_revenue NUMERIC(12,2) NOT NULL,
 
     inserted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

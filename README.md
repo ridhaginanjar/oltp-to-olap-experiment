@@ -34,3 +34,15 @@ FROM
 WHERE
 	table_name = 'TABLE_NAME';
 ```
+
+# DDL FOR OLAP
+
+See `olap-model.sql` for the DDL. It defines the OLAP data model used for analytics.
+
+![OLAP diagram](olap-diagram.png)
+
+This model is designed to support analytics for the business unit, with a focus on revenue derived from sales.
+
+We pre-calculate `net_revenue` in `fact_sales` because it is used frequently across analytics queries and reports.
+
+Note that `fact_sales` stores foreign keys that reference the related dimension tables.
