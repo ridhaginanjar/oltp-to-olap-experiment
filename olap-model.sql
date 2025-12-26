@@ -5,7 +5,8 @@ CREATE TABLE IF NOT EXISTS dim_customer(
     contact_name VARCHAR(30) NOT NULL,
     city VARCHAR(15),
     region VARCHAR(15),
-    country VARCHAR(15)
+    country VARCHAR(15),
+    inserted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 
 CREATE TABLE IF NOT EXISTS dim_products (
@@ -13,7 +14,8 @@ CREATE TABLE IF NOT EXISTS dim_products (
     product_id INT,
     product_name VARCHAR(40) NOT NULL,
     category_name VARCHAR(15),
-    unit_price INT
+    unit_price NUMERIC(12,2),
+    inserted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 
 CREATE TABLE IF NOT EXISTS dim_date (
@@ -28,7 +30,8 @@ CREATE TABLE IF NOT EXISTS dim_date (
     day INT NOT NULL,
     day_name VARCHAR(10) NOT NULL,
     week INT NOT NULL,
-    is_weekend BOOLEAN NOT NULL
+    is_weekend BOOLEAN NOT NULL,
+    inserted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 
 CREATE TABLE IF NOT EXISTS fact_sales (
