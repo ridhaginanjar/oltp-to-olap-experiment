@@ -102,9 +102,9 @@ CREATE TABLE IF NOT EXISTS core.dim_date (
 
 CREATE TABLE IF NOT EXISTS core.fact_sales (
     fact_key SERIAL PRIMARY KEY,
-    product_key INT REFERENCES dim_products(product_key),
-    customer_key INT REFERENCES dim_customer(customer_key),
-    date_key INT REFERENCES dim_date(date_key),
+    product_key INT REFERENCES core.dim_products(product_key),
+    customer_key INT REFERENCES core.dim_customer(customer_key),
+    date_key INT REFERENCES core.dim_date(date_key),
     order_id INT NOT NULL,
     quantity INT,
     unit_price NUMERIC(12,2) NOT NULL,
